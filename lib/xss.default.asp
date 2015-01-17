@@ -310,10 +310,15 @@ function StripTagBody (tags, next) {
     next = function () {};
   }
 
-  var isRemoveAllTag = !(typeof(tags).toString().toLowerCase().indexOf("array") > 0);
+  var isRemoveAllTag = !(tags instanceof Array);
   function isRemoveTag (tag) {
     if (isRemoveAllTag) return true;
-    return (tags.indexOf(tag) !== -1);
+    return (function (tag) {
+      for (var i = 0; i < tags.length; i++) {
+        if (tags[i] == tag) return true;
+      }
+      return false;
+    })(tag);
   }
 
   var removeList = [];   // 要删除的位置范围列表
@@ -382,6 +387,7 @@ exports.onIgnoreTagStripAll = onIgnoreTagStripAll;
 exports.StripTagBody = StripTagBody;
 exports.stripCommentTag = stripCommentTag;
 exports.allowCommentTag = false;
+exports.stripIgnoreTagBody = false;
 
 XSS_CONFIG = exports;
 })();
