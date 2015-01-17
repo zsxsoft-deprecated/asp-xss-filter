@@ -1,7 +1,7 @@
 <%@LANGUAGE="JAVASCRIPT" CODEPAGE="65001"%>
-<!-- #include file="xss.default.asp"-->
-<!-- #include file="xss.parser.asp"-->
-<!-- #include file="xss.xss.asp"-->
+<!-- #include file="lib/xss.default.asp"-->
+<!-- #include file="lib/xss.parser.asp"-->
+<!-- #include file="lib/xss.xss.asp"-->
 
 <%
 function filterXSS (html, options) {

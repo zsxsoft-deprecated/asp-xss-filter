@@ -24,8 +24,8 @@ function getTagName (html) {
     var tagName = html.slice(1, i + 1);
   }
   tagName = tagName.replace(/(^\s*)|(\s*$)/g, "").toLowerCase();
-  if (tagName[0] === '/') tagName = tagName.slice(1);
-  if (tagName[tagName.length - 1] === '/') tagName = tagName.slice(0, -1);
+  if (tagName.substr(0, 1) === '/') tagName = tagName.slice(1);
+  if (tagName.substr(tagName.length - 1, 1) === '/') tagName = tagName.slice(0, -1);
   return tagName;
 }
 
