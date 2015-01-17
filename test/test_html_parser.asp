@@ -1,5 +1,7 @@
 <%@ CODEPAGE="65001"%>
 <!-- #include file="assert.asp" -->
+<!-- #include file="../lib/xss.default.asp"-->
+<!-- #include file="../lib/xss.parser.asp"-->
 <!-- #include file="../lib/xss.xss.asp"-->
 <script language="javascript" runat="server">
 function xss (html, options) {

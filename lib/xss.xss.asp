@@ -1,5 +1,3 @@
-<!-- #include file="xss.default.asp"-->
-<!-- #include file="xss.parser.asp"-->
 <script language="javascript" runat="server">
 
 /**
