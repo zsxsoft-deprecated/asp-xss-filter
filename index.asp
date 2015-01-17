@@ -9,5 +9,5 @@ function filterXSS (html, options) {
   return xss.process(html);
 }
 
-Response.Write(filterXSS("<a style=\"font-family: aaa\" href=\"aaa\">aa</a>"));
+Response.Write(filterXSS("<a style=\"font-family: aaa\" href=\"http://www.baidu.com/\">aa</a>"));
 %>

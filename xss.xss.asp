@@ -135,7 +135,12 @@ var FilterXSS = function(options) {
           var attrsHtml = parseAttr(attrs.html, function(name, value) {
 
             // 调用onTagAttr处理
-            var isWhiteAttr = (typeof(whiteAttrList[name]) !== 'undefined');
+            var isWhiteAttr = (function (name) {
+              for (var i = 0; i < whiteAttrList.length; i++) {
+                if (whiteAttrList[i] == name) return true;
+              }
+              return false;
+            })(name);
             var ret = onTagAttr(tag, name, value, isWhiteAttr);
             if (!isNull(ret)) return ret;
 

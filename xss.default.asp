@@ -150,7 +150,7 @@ function safeAttrValue (tag, name, value) {
   if (name === 'href' || name === 'src') {
     // 过滤 href 和 src 属性
     // 仅允许 http:// | https:// | mailto: | / 开头的地址
-    value = value.trim();
+    value = value.replace(/(^\s*)|(\s*$)/g, "");
     if (value === '#') return '#';
     if (!(value.substr(0, 7) === 'http://' ||
          value.substr(0, 8) === 'https://' ||
@@ -263,7 +263,7 @@ function clearNonPrintableCharacter (str) {
 < len; i++) {
     str2 += str.charCodeAt(i) < 32 ? ' ' : str.charAt(i);
   }
-  return str2.trim();
+  return str2.replace(/(^\s*)|(\s*$)/g, "");
 }
 
 /**
