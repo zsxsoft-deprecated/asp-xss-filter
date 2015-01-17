@@ -155,7 +155,7 @@ function safeAttrValue (tag, name, value) {
     if (!(value.substr(0, 7) === 'http://' ||
          value.substr(0, 8) === 'https://' ||
          value.substr(0, 7) === 'mailto:' ||
-         value[0] === '/')) {
+         value.substr(0, 1) === '/')) {
       return '';
     }
   } else if (name === 'background') {
@@ -234,7 +234,7 @@ function unescapeQuote (str) {
  */
 function escapeHtmlEntities (str) {
   return str.replace(REGEXP_ATTR_VALUE_1, function replaceUnicode (str, code) {
-    return (code[0] === 'x' || code[0] === 'X')
+    return (code.substr(0, 1) === 'x' || code.substr(0, 1) === 'X')
             ? String.fromCharCode(parseInt(code.substr(1), 16))
             : String.fromCharCode(parseInt(code, 10));
   });
@@ -342,8 +342,8 @@ function StripTagBody (tags, next) {
       var rethtml = '';
       var lastPos = 0;
       removeList.forEach(function (pos) {
-        rethtml += html.slice(lastPos, pos[0]);
-        lastPos = pos[1];
+        rethtml += html.slice(lastPos, pos.substr(0, 1));
+        lastPos = pos.substr(1, 1);
       });
       rethtml += html.slice(lastPos);
       return rethtml;

@@ -43,11 +43,11 @@ var FilterXSS = function(options) {
     if (i === -1) {
       return {
         html: '',
-        closing: (html[html.length - 2] === '/')
+        closing: (html.substr(html.length - 2, 1) === '/')
       };
     }
     html = html.slice(i + 1, -1).replace(/(^\s*)|(\s*$)/g, "");
-    var isClosing = (html[html.length - 1] === '/');
+    var isClosing = (html.substr(html.length - 1, 1) === '/');
     if (isClosing) html = html.slice(0, -1).replace(/(^\s*)|(\s*$)/g, "");
     return {
       html: html,
