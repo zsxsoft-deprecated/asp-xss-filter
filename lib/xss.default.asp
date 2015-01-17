@@ -310,7 +310,7 @@ function StripTagBody (tags, next) {
     next = function () {};
   }
 
-  var isRemoveAllTag = !Array.isArray(tags);
+  var isRemoveAllTag = !(typeof(tags).toString().toLowerCase().indexOf("array") > 0);
   function isRemoveTag (tag) {
     if (isRemoveAllTag) return true;
     return (tags.indexOf(tag) !== -1);
@@ -341,10 +341,11 @@ function StripTagBody (tags, next) {
     remove: function (html) {
       var rethtml = '';
       var lastPos = 0;
-      removeList.forEach(function (pos) {
-        rethtml += html.slice(lastPos, pos.substr(0, 1));
-        lastPos = pos.substr(1, 1);
-      });
+      for (var item in removeList) {
+        pos = removeList[item];
+        rethtml += html.slice(lastPos, pos[0]);
+        lastPos = pos[1];
+      }
       rethtml += html.slice(lastPos);
       return rethtml;
     }
