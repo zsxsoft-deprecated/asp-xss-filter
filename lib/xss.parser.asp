@@ -1,7 +1,12 @@
 <script language="javascript" runat="server">
+/**
+ * asp-xss-filter
+ * @author zsx<zsx@zsxsoft.com>
+ */
 var XSS_PARSER = {};
 (function () {
   var exports = {};
+  
 /**
  * 简单 HTML Parser
  *

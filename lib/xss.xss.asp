@@ -1,4 +1,8 @@
 <script language="javascript" runat="server">
+/**
+ * asp-xss-filter
+ * @author zsx<zsx@zsxsoft.com>
+ */
 
 /**
  * XSS过滤对象

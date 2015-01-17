@@ -1,5 +1,9 @@
 <script language="javascript" runat="server">
 var FilterXSS = (function () {
+/**
+ * asp-xss-filter
+ * @author zsx<zsx@zsxsoft.com>
+ */
 var XSS_CONFIG = {};
 (function () {
 
@@ -394,9 +398,14 @@ XSS_CONFIG = exports;
 })();
 
 
+/**
+ * asp-xss-filter
+ * @author zsx<zsx@zsxsoft.com>
+ */
 var XSS_PARSER = {};
 (function () {
   var exports = {};
+  
 /**
  * 简单 HTML Parser
  *
@@ -581,6 +590,10 @@ exports.parseAttr = parseAttr;
   XSS_PARSER = exports;
 })();
 
+/**
+ * asp-xss-filter
+ * @author zsx<zsx@zsxsoft.com>
+ */
 
 /**
  * XSS过滤对象
