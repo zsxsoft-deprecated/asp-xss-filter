@@ -358,10 +358,10 @@ function StripTagBody (tags, next) {
  * @param {String} html
  * @return {String}
  */
+var STRIP_COMMENT_TAG_REGEXP = new RegExp("<" + "!--[\\s\\S]*?-->", "ig");
 function stripCommentTag (html) {
   return html.replace(STRIP_COMMENT_TAG_REGEXP, '');
 }
-var STRIP_COMMENT_TAG_REGEXP = new RegExp("<" + "!--[\s\S]*?-->", "ig");
 
 
 exports.whiteList = whiteList;
@@ -381,6 +381,7 @@ exports.escapeAttrValue = escapeAttrValue;
 exports.onIgnoreTagStripAll = onIgnoreTagStripAll;
 exports.StripTagBody = StripTagBody;
 exports.stripCommentTag = stripCommentTag;
+exports.allowCommentTag = true;
 
 XSS_CONFIG = exports;
 })();

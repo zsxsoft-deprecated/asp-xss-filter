@@ -72,6 +72,7 @@ var FilterXSS = function(options) {
   options.onIgnoreTagAttr = options.onIgnoreTagAttr || DEFAULT.onIgnoreTagAttr;
   options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
   options.escapeHtml = options.escapeHtml || DEFAULT.escapeHtml;
+  options.allowCommentTag = (typeof(options.allowCommentTag) != 'undefined' ? options.allowCommentTag : DEFAULT.allowCommentTag);
   //this.options = options;
   return {
     options: options,
