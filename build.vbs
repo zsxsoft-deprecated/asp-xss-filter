@@ -25,11 +25,9 @@ If Not objFSO.FolderExists(".\dist") Then
 	objFSO.CreateFolder ".\dist"
 End If
 
-If (MsgBox("Charset:" & vbCrlf & vbCrlf & "Yes - UTF-8" & vbCrlf & "No - GBK", vbQuestion + vbYesNo) = vbYes) Then
-	Call SaveToFile(strDir & "\dist\xss.class.asp", strContent, "UTF-8")
-Else
-	Call SaveToFile(strDir & "\dist\xss.class.asp", strContent, "GBK")
-End If
+
+Call SaveToFile(strDir & "\dist\xss.class.utf8.asp", strContent, "UTF-8")
+Call SaveToFile(strDir & "\dist\xss.class.gbk.asp", strContent, "GBK")
 
 Function LoadFromFile(strFile, strCharset) 
 	Dim objStream 
