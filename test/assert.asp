@@ -17,11 +17,23 @@ var describe = function (name, func) {
 
 var assert = {
 	equal: function (a, b) {
-		if (a != b) {
-			Response.Write ("<p style='color:red'>ERROR - " + a + " ||| " + b + "</p>\n\n");
+		if (a !== b) {
+			console.error(a + " ||| " + b);
 		}  else {
-			Response.Write ("<p style='color:green'>PASS - " + a + " ||| " + b + "</p>\n\n");
+			console.success(a + " ||| " + b);
 		}
+	}
+}
+
+var console = {
+	error: function (msg) {
+		Response.Write("<p style='color: red'>ERROR - " + msg + "</p>\n");
+	}, 
+	success: function (msg) {
+		Response.Write("<p style='color: green'>OK - " + msg + "</p>\n");
+	}, 
+	log: function (msg) {
+		Response.Write("<p>" + msg + "</p>\n");
 	}
 }
 </script>
