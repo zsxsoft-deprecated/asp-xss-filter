@@ -381,7 +381,7 @@ exports.escapeAttrValue = escapeAttrValue;
 exports.onIgnoreTagStripAll = onIgnoreTagStripAll;
 exports.StripTagBody = StripTagBody;
 exports.stripCommentTag = stripCommentTag;
-exports.allowCommentTag = true;
+exports.allowCommentTag = false;
 
 XSS_CONFIG = exports;
 })();
