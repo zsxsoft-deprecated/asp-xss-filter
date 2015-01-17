@@ -1,5 +1,4 @@
-<!-- #include file="xss.default.asp"-->
-<%
+<script language="javascript" runat="server">
 var XSS_PARSER = {};
 (function () {
   var exports = {};
@@ -186,4 +185,4 @@ exports.parseAttr = parseAttr;
 
   XSS_PARSER = exports;
 })();
-%>
+</script>

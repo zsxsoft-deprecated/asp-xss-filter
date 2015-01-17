@@ -1,4 +1,4 @@
-<%
+<script language="javascript" runat="server">
 var XSS_CONFIG = {};
 (function () {
 
@@ -360,7 +360,7 @@ function StripTagBody (tags, next) {
 function stripCommentTag (html) {
   return html.replace(STRIP_COMMENT_TAG_REGEXP, '');
 }
-var STRIP_COMMENT_TAG_REGEXP = /<!--[\s\S]*?-->/g;
+var STRIP_COMMENT_TAG_REGEXP = new RegExp("<" + "!--[\s\S]*?-->", "ig");
 
 
 exports.whiteList = whiteList;
@@ -384,4 +384,4 @@ exports.stripCommentTag = stripCommentTag;
 XSS_CONFIG = exports;
 })();
 
-%>
+</script>
