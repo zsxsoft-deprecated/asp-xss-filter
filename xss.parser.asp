@@ -1,3 +1,8 @@
+<!-- #include file="xss.default.asp"-->
+<%
+var XSS_PARSER = {};
+(function () {
+  var exports = {};
 /**
  * 简单 HTML Parser
  *
@@ -18,7 +23,7 @@ function getTagName (html) {
   } else {
     var tagName = html.slice(1, i + 1);
   }
-  tagName = tagName.trim().toLowerCase();
+  tagName = tagName.replace(/(^\s*)|(\s*$)/g, "").toLowerCase();
   if (tagName[0] === '/') tagName = tagName.slice(1);
   if (tagName[tagName.length - 1] === '/') tagName = tagName.slice(0, -1);
   return tagName;
@@ -123,7 +128,7 @@ function parseAttr (html, onAttr) {
   var len = html.length;  // HTML代码长度
 
   function addAttr (name, value) {
-    name =  name.trim();
+    name =  name.replace(/(^\s*)|(\s*$)/g, "");
     name = name.replace(REGEXP_ATTR_NAME, '').toLowerCase();
     if (name.length < 1) return;
     retAttrs.push(onAttr(name, value || ''));
@@ -143,7 +148,7 @@ function parseAttr (html, onAttr) {
         if (j === -1) {
           break;
         } else {
-          v = html.slice(lastPos + 1, j).trim();
+          v = html.slice(lastPos + 1, j).replace(/(^\s*)|(\s*$)/g, "");
           addAttr(tmpName, v);
           tmpName = false;
           i = j;
@@ -153,7 +158,7 @@ function parseAttr (html, onAttr) {
       }
     }
     if (c === ' ') {
-      v = html.slice(lastPos, i).trim();
+      v = html.slice(lastPos, i).replace(/(^\s*)|(\s*$)/g, "");
       if (tmpName === false) {
         addAttr(v);
       } else {
@@ -173,8 +178,12 @@ function parseAttr (html, onAttr) {
     }
   }
 
-  return retAttrs.join(' ').trim();
+  return retAttrs.join(' ').replace(/(^\s*)|(\s*$)/g, "");
 }
 
 exports.parseTag = parseTag;
 exports.parseAttr = parseAttr;
+
+  XSS_PARSER = exports;
+})();
+%>

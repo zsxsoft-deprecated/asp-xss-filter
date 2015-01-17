@@ -1,3 +1,5 @@
+<%@LANGUAGE="JAVASCRIPT" CODEPAGE="65001"%>
+<%
 /**
  * 模块入口
  *
@@ -63,3 +65,4 @@ if (typeof define === 'function' && define.amd) {
 if (typeof window !== 'undefined') {
   window.filterXSS = module.exports;
 }
+%>

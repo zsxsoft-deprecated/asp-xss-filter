@@ -1,8 +1,14 @@
+<%
+var XSS_CONFIG = {};
+(function () {
+
+  var exports = {};
+
 /**
  * 默认配置
  *
  * @author 老雷<leizongmin@gmail.com>
- */
+*/
 
 
 // 默认白名单
@@ -253,7 +259,8 @@ function escapeDangerHtml5Entities (str) {
  */
 function clearNonPrintableCharacter (str) {
   var str2 = '';
-  for (var i = 0, len = str.length; i < len; i++) {
+  for (var i = 0, len = str.length; i
+< len; i++) {
     str2 += str.charCodeAt(i) < 32 ? ' ' : str.charAt(i);
   }
   return str2.trim();
@@ -373,3 +380,8 @@ exports.escapeAttrValue = escapeAttrValue;
 exports.onIgnoreTagStripAll = onIgnoreTagStripAll;
 exports.StripTagBody = StripTagBody;
 exports.stripCommentTag = stripCommentTag;
+
+XSS_CONFIG = exports;
+})();
+
+%>
